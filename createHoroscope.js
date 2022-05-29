@@ -1,6 +1,6 @@
 var widthC=600;
 var heightC=300;
-let lines;
+let lines, lol, lol2;
 
 function preload(){
 
@@ -10,21 +10,23 @@ function preload(){
 
 function setup() {
 
+    //criação do canvas, onde aparece depois o horóscopo
     canvas=createCanvas(widthC, heightC);
     canvas.parent('#canvas-container');
 
-    let lol=random(lines);
-    text(lol, 10, 10, 80, 80);
+    //teste .txt
+    lol=random(lines);
     console.log(lol);
 
-    RiTa.pos('my name is'); 
+    //teste RiTa
+    lol2 = RiTa.pos(lol); 
+    console.log(lol2);
 
 }
 
 function draw() {
 
-    //background(220);
-
-    
+    background(220);
+    text(lol, 10, 10, 80, 80);
 
 }
