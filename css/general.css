@@ -1,0 +1,27 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width:100vw;
+  height:100vh;
+  overflow-y: hidden; 
+}
+@font-face{
+  font-family: "Italiana";
+  src: url("fonts/Italiana-Regular.ttf");
+}
+@font-face{
+  font-family: "Rubik";
+  src: url("fonts/Rubik.ttf");
+}
+h1,h2,h3{
+  font-family: "Italiana";
+}
+a{
+  text-decoration: none;
+}
+body{
+  background: url("img/bg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center ;
+}

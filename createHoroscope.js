@@ -10,11 +10,6 @@ function preload(){
 
 function setup() {
 
-    //criação do canvas, onde aparece depois o horóscopo
-    canvas=createCanvas(widthC, heightC);
-    canvas.parent('#canvas-container');
-
-    //teste .txt
     lol=random(lines);
     console.log(lol);
 
@@ -26,7 +21,7 @@ function setup() {
 
 function draw() {
 
-    background(220);
-    text(lol, 10, 10, 80, 80);
+    //background(220);
+    //text(lol, 10, 10, 80, 80);
 
 }
