@@ -4,7 +4,6 @@ function getChinese(chinese_id) {
     alert(chinese_id);
     chinese = chinese_id;
     return chinese_id;
-
 }
 
 
