@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <script src="libraries/p5.min.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/rita@2.8.1/dist/rita.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/generate.css">
+    <link rel="stylesheet" href="css/vars.css">
+
+
+    <title>Creative Horoscope</title>
+
+</head>
+
+
+<body>
+
+
+    <main>
+        <section id="content">
+
+            <img src="css/img/title-generate.svg" alt="title">
+
+            <div id="container" class="sign">
+
+                <div class="conteudo" id="my-sign">
+
+                    <h1>Which one is your astrological sign?</h1>
+                    <ul class="grid12" id="signs-grid">
+                        <li>
+                            <img src="css/img/signs/aries.svg" alt="aries" id="aries" onclick="changeMySign()">
+                            <p>Aries</p>
+                        </li>
+
+                        <li>
+                            <img src="css/img/signs/taurus.svg" alt="taurus" id="taurus" onclick="changeMySign()">
+                            <p>Taurus</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/signs/gemini.svg" alt="gemini" id="gemini" onclick="changeMySign()">
+                            <p>Gemini</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/signs/cancer.svg" alt="cancer" id="cancer" onclick="changeMySign()">
+                            <p>Cancer</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/signs/leo.svg" alt="leo" id="leo" onclick="changeMySign()">
+                            <p>Leo</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/signs/virgo.svg" alt="virgo" id="virgo" onclick="changeMySign()">
+                            <p>Virgo</p>
+
+                        </li>
+
+
+                        <li>
+                            <img src="css/img/signs/libra.svg" alt="libra" id="libra" onclick="changeMySign()">
+                            <p>Libra</p>
+
+                        </li>
+
+                        <li>
+                            <img src="css/img/signs/scorpio.svg" alt="scorpio" id="scorpio" onclick="changeMySign()">
+                            <p>Scorpio</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/signs/sagittarius.svg" alt="sagittarius" id="sagittarius"
+                                onclick="changeMySign()">
+                            <p>Sagittarius</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/signs/capricorn.svg" alt="capricorn" id="capricorn"
+                                onclick="changeMySign()">
+                            <p>Capricorn</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/signs/aquarius.svg" alt="aquarius" id="aquarius" onclick="changeMySign()">
+                            <p>Aquarius</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/signs/pisces.svg" alt="pisces" id="pisces" onclick="changeMySign()">
+                            <p>Pisces</p>
+
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="conteudo" id="chinese-year">
+                    <h1>Which is you chinese sign?</h1>
+                    <ul class="grid12" id="signs-grid">
+                        <li>
+                            <img src="css/img/chinese/rat.svg" alt="rat" id="rat"
+                                onclick="getChinese(this.id); changeChinese()">
+                            <p>Rat</p>
+                        </li>
+
+                        <li>
+                            <img src="css/img/chinese/ox.svg" alt="ox" id="ox"
+                                onclick="getChinese(this.id); changeChinese()">
+                            <p>Ox</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/chinese/tiger.svg" alt="tiger" id="tiger"
+                                onclick="getChinese(this.id); changeChinese()">
+                            <p>Tiger</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/chinese/rabbit.svg" alt="rabbit" id="rabbit"
+                                onclick="getChinese(this.id); changeChinese()">
+                            <p>Rabbit</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/chinese/dragon.svg" alt="dragon" id="dragon"
+                                onclick="getChinese(this.id); changeChinese()">
+                            <p>Dragon</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/chinese/serpent.svg" alt="snake" id="snake"
+                                onclick="getChinese(this.id); changeChinese()">
+                            <p>Snake</p>
+
+                        </li>
+
+
+                        <li>
+                            <img src="css/img/chinese/horse.svg" alt="horse" id="horse"
+                                onclick="getChinese(this.id); changeChinese()">
+                            <p>Horse</p>
+                        </li>
+
+                        <li>
+                            <img src="css/img/chinese/goat.svg" alt="goat" id="Goat"
+                                onclick="getChinese(this.id); changeChinese()">
+                            <p>Goat</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/chinese/rooster.svg" alt="monkey" id="monkey"
+                                onclick="getChinese(this.id); changeChinese()">
+                            <p>Monkey</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/chinese/monkey.svg" alt="rooster" id="rooster"
+                                onclick="getChinese(this.id); changeChinese()">
+                            <p>Rooster</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/chinese/dog.svg" alt="dog" id="dog"
+                                onclick="getChinese(this.id); changeChinese()">
+                            <p>Dog</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/chinese/pig.svg" alt="pig" id="pig"
+                                onclick="getChinese(this.id); changeChinese()">
+                            <p>Pig</p>
+
+                        </li>
+                    </ul>
+
+
+
+
+                </div>
+
+                <div class="conteudo" id="moon">
+                    <h1>Tell us your favourite moon...</h1>
+                    <ul class="grid8" id="signs-grid">
+                        <li>
+                            <img src=css/img/moons/waxing-crescent.svg" alt="new-moon" id="new-moon"onclick="getMoon(this.id); changeMoon()">
+                            <p>New Moon</p>
+                        </li>
+
+                        <li>
+                            <img src="css/img/moons/waxing-crescent.svg" alt="waxing-crescent" id="waxing-crescent"
+                                onclick="getMoon(this.id); changeMoon()">
+                            <p>Waxing Crescent</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/moons/first-quarter.svg" alt="first-quarter" id="first-quarter"
+                                onclick="getMoon(this.id); changeMoon()">
+                            <p>First Quarter</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/moons/waxing-gibbous.svg" alt="waxing-gibbous" id="waxing-gibous"
+                                onclick="getMoon(this.id); changeMoon()">
+                            <p>Waxing Gibbous</p>
+
+                        </li>
+
+
+                        <li>
+                            <img src="css/img/moons/full-moon.svg" alt="full-moon" id="full-moon"
+                                onclick="getMoon(this.id); changeMoon()">
+                            <p>Full Moon</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/moons/waning-gibbous.svg" alt="waning-gibbous" id="waning-gibbous"
+                                onclick="getMoon(this.id); changeMoon()">
+                            <p>Waning Gibbous</p>
+
+                        </li>
+
+                        <li>
+                            <img src="css/img/moons/third-quarter.svg" alt="third-quarter" id="third-quarter"
+                                onclick="getMoon(this.id); changeMoon()">
+                            <p>Third Quarter</p>
+                        </li>
+                        <li>
+                            <img src="css/img/moons/waning-crescent.svg" alt="waning-crescent" id="waning-crescent"
+                                onclick="getMoon(this.id); changeMoon()">
+                            <p>Waning Crescent</p>
+                        </li>
+
+
+                    </ul>
+
+
+                </div>
+
+                <div class="conteudo" id="partner-sign">
+                    <h1>May we know your ideal partner's sign?</h1>
+                    <ul class="grid12" id="signs-grid">
+                        <li>
+                            <img src="css/img/signs/aries.svg" alt="aries" id="aries"
+                                onclick="getSign(this.id), goHoroscope()">
+                            <p>Aries</p>
+                        </li>
+
+                        <li>
+                            <img src="css/img/signs/taurus.svg" alt="taurus" id="taurus"
+                                onclick="getSign(this.id),goHoroscope()">
+                            <p>Taurus</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/signs/gemini.svg" alt="gemini" id="gemini"
+                                onclick="getSign(this.id),goHoroscope()">
+                            <p>Gemini</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/signs/cancer.svg" alt="cancer" id="cancer"
+                                onclick="getSign(this.id),goHoroscope()">
+                            <p>Cancer</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/signs/leo.svg" alt="leo" id="leo"
+                                onclick="getSign(this.id),goHoroscope()">
+                            <p>Leo</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/signs/virgo.svg" alt="virgo" id="virgo"
+                                onclick="getSign(this.id),goHoroscope()">
+                            <p>Virgo</p>
+
+                        </li>
+
+
+                        <li>
+                            <img src="css/img/signs/libra.svg" alt="libra" id="libra"
+                                onclick="getSign(this.id),goHoroscope()">
+                            <p>Libra</p>
+
+                        </li>
+
+                        <li>
+                            <img src="css/img/signs/scorpio.svg" alt="scorpio" id="scorpio"
+                                onclick="getSign(this.id),goHoroscope()">
+                            <p>Scorpio</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/signs/sagittarius.svg" alt="sagittarius" id="sagittarius"
+                                onclick="getSign(this.id),goHoroscope()">
+                            <p>Sagittarius</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/signs/capricorn.svg" alt="capricorn" id="capricorn"
+                                onclick="getSign(this.id),goHoroscope()">
+                            <p>Capricorn</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/signs/aquarius.svg" alt="aquarius" id="aquarius"
+                                onclick="getSign(this.id),goHoroscope()">
+                            <p>Aquarius</p>
+
+                        </li>
+                        <li>
+                            <img src="css/img/signs/pisces.svg" alt="pisces" id="pisces"
+                                onclick="getSign(this.id),goHoroscope()">
+                            <p>Pisces</p>
+
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <a id="back" href="index.html">
+                <h1>back</h1>
+            </a>
+
+        </section>
+    </main>
+</body>
+
+
+</html>
+
+
+<script>
+    let chinese, moon, partner;
+    
+    var mySignDiv = document.getElementById("my-sign")
+    var chineseDiv = document.getElementById("chinese-year");
+    var moonDiv = document.getElementById("moon");
+    var partnerDiv = document.getElementById("partner-sign");
+
+    function getChinese(chinese_id) {
+        //alert(chinese_id);
+        chinese=chinese_id;
+        return chinese_id;
+    }
+
+    function getMoon(moon_id) {
+        //alert(moon_id);
+        moon=moon_id;
+        return moon_id;
+    }
+
+    function getSign(sign_id) {
+        //alert(sign_id);
+        partner=sign_id;
+        return sign_id;
+    }
+
+    function changeMySign() {
+        mySignDiv.style.display = "none";
+        chineseDiv.style.display = "block";
+    }
+    function changeChinese() {
+        chineseDiv.style.display = "none";
+        moonDiv.style.display = "block";
+    }
+    function changeMoon() {
+        moonDiv.style.display = "none";
+        partnerDiv.style.display = "block";
+    }
+
+    function goHoroscope() {
+
+        window.location.href = "horoscope.html?" + chinese + "|"+ moon+"|"+ partner;
+
+    }
+
+</script>

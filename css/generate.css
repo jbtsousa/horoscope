@@ -1,0 +1,92 @@
+#my-sign{
+    display:block;
+    transition: 2s;
+}
+#chinese-year, #moon, #partner-sign{
+    display: none;
+}
+
+.conteudo h1{
+    text-align: center;
+}
+.sign h1:hover{
+    text-decoration: none;
+}
+.grid12{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.grid8{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+}
+.grid12 li , .grid8 li {
+    list-style-type: none;
+    display: grid;
+    place-items: center;
+    padding:  3vh 0 ;
+}
+.grid12 li img:hover , .grid8 li img:hover{
+    cursor: pointer;
+}
+#signs-grid li{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position:top;
+}
+
+#signs-grid li:nth-child(1),
+#signs-grid li:nth-child(4),
+#signs-grid li:nth-child(9),
+#signs-grid li:nth-child(12){
+    background-image: url("img/ellipse-purple.svg") ;
+    
+}
+#signs-grid li:nth-child(2),
+#signs-grid li:nth-child(5),
+#signs-grid li:nth-child(7),
+#signs-grid li:nth-child(10){
+    background-image: url("img/ellipse-pink.svg") ;
+}
+#signs-grid li:nth-child(3),
+#signs-grid li:nth-child(6),
+#signs-grid li:nth-child(8),
+#signs-grid li:nth-child(11){
+    background-image: url("img/ellipse-yellow.svg") ;
+}
+
+#chinese-year .grid12 li img{
+    width:60%;
+}
+#content #controls{
+    padding-top:2% ;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#controls a{
+    display: grid;
+    place-items: center; 
+}
+
+#controls a img:hover{
+    cursor: pointer;
+    background-image: url("img/ellipse-yellow.svg") ;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center ;
+
+
+}
+#back h1{
+    color:black
+}
+#back:hover{
+    text-decoration: underline;
+}
+
+#new-moon{
+    opacity: 0;
+}
+
