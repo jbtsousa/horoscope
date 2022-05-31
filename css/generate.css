@@ -58,11 +58,8 @@
 #chinese-year .grid12 li img{
     width:60%;
 }
-#content #controls{
-    padding-top:2% ;
-    display: flex;
-    justify-content: space-between;
-
+#signs-grid li img{
+    width:30%
 }
 
 #controls a{

@@ -27,12 +27,10 @@ function setup() {
     dos = select('#dos');
     donts = select('#donts');
     paragraph = select('#paragraph-chinese');
+    
 
-    //map1(partnerSign);
-    map1();
-    //chinese Sign entra no mapeamento 3
-    //map2(moon);
-    map2();
+    map1(partnerSign);
+    map2(moon);
     //map3(chineseSign);
     map3("fast"); //para testar
 
@@ -41,90 +39,109 @@ function setup() {
 
 ////////////////////////////////////////////////////MAPEAMENTO 1
 ///////////////////////////////////////signo >> início de frase >> text marjov e horoscope.txt >> lema
-function map1(){
+function map1(partner_sign){
     console.log("MAPEAMENTO1");
 
     let txt_horoscopes = carregaCont(horoscopes);
     var rm_2 = criaMod(txt_horoscopes, 3);
 
-    let phrase_inicio;
+    var phrase_inicio;
+    
 
-    /*function phr_partnerSign(partner_sign) {
-        if (partner_sign == "aries") {
-            phrase_inicio = "You will feel";
+    function phr_partnerSign(partner_sign) {
+
+        if (partner_sign === "aries") {
+            phrase_inicio = "You will feel"; //LemaF: "You will feel the a as good better."
         }
-        else if (partner_sign == "taurus") {
-            phrase_inicio = "After every"
+        else if (partner_sign ==  "taurus") {
+            phrase_inicio = "Feel more and" //LemaF: "Feel more and do no spending dream take."
         }
-        else if (partner_sign == "gemini") {
-            phrase_inicio = "Today is"
+        else if (partner_sign ===  "gemini") {
+            phrase_inicio = "Today is always" //LemaF: "Today is always a something the someone good."
         }
-        else if (partner_sign == "cancer") {
-            phrase_inicio = "Don't forget"
+        else if (partner_sign ===  "cancer") {
+            phrase_inicio = "Do not forget" //LemaF: "Do not forget that."
         }
-        else if (partner_sign == "leo") {
-            phrase_inicio = "Fell this"
+        else if (partner_sign ===  "leo") {
+            phrase_inicio = "Fell this you" //LemaF: "Feet this you may." (Muito Star Wars vibe)
         }
-        else if (partner_sign == "virgo") {
-            phrase_inicio = "Long walk"
+        else if (partner_sign===  "virgo") {
+            phrase_inicio = "Think about this" //LemaF: "Think about this weekend and."
         }
-        else if (partner_sign == "libra") {
-            phrase_inicio = "Sometimes"
+        else if (partner_sign ===  "libra") {
+            phrase_inicio = "Sometimes there is" //LemaF: "Sometimes there is no a something nothing still."
         }
-        else if (partner_sign == "scorpio") {
-            phrase_inicio = "Forever young"
+        else if (partner_sign ===  "scorpio") {
+            phrase_inicio = "Your luck is" //LemaF: "Your luck is on about well what certainly."
         }
-        else if (partner_sign == "saggittarius") {
-            phrase_inicio = "Walk alone but"
+        else if (partner_sign ===  "saggittarius") {
+            phrase_inicio = "Walk together but" //LemaF: "Walk tohether but to the there it you."
         }
-        else if (partner_sign == "capricorn") {
-            phrase_inicio = "No one is"
+        else if (partner_sign ===  "capricorn") {
+            phrase_inicio = "No one is" //LemaF: "No one is perfect out as trying more."
         }
-        else if (partner_sign == "aquarius") {
-            phrase_inicio = "The path"
+        else if (partner_sign ===  "aquarius") {
+            phrase_inicio = "Run away and" //LemaF: "Run away and start give take sooner you."
         }
-        else if (partner_sign == "pisces") {
-            phrase_inicio = "Today choose"
+        else if (partner_sign ===  "pisces") {
+            phrase_inicio = "Your dreams will" //LemaF: "Your dreams will start get soon come."
         }
-        //console.log(phrase_inicio);
+        
         return phrase_inicio;
 
-    }*/
+    }
 
-    phrase_inicio="your luck is";
-    var lemaF;
+    phr_partnerSign(partner_sign);
+
+    console.log("frase inicio:",phrase_inicio); 
+    var lemaF ="";
 
     let comp = new Array();
     comp = rm_2.completions(splitTokens(phrase_inicio));
-    console.log("frase inicial:" ,phrase_inicio);
 
-    //i<5 define o numero de palavras do lema
+    //i<5 define o numero maximo de palavras do lema
     for(let i=0; i<5 && i<comp.length;i++){
-        console.log("o resto do lema é:"," " , comp[i]);
-        //lemaF=
+        //console.log("o resto do lema é:"," " , comp[i]);
+        lemaF= lemaF+ " " +comp[i];
     }
-    //console.log("O lemaF é:",lemaF);
-    
 
+    lemaF= phrase_inicio + lemaF + ".";
+
+    console.log("O lemaF é do mapeamento 1:",lemaF);
+    
 }
 
 
 ////////////////////////////////////////////////////MAPEAMENTO 2
 ///////////////////////////////////////lua >> middleWord e horoscopes.txt >> verbos e nomes
 
-function map2() {
+function map2(m) {
     console.log("MAPEAMENTO2");
 
-    let txt_fairytales = carregaCont(fairyTales);
-    var rm_f = criaMod(txt_fairytales, 6);
+    let txt_horoscopes = carregaCont(horoscopes);
+    var rm_f = criaMod(txt_horoscopes, 6);
 
-    let bef = "new";
-    let aft = "you";
+    console.log(m);
+    let bef, aft;
 
-    //o erro/problema esta a partir daqui
+    function befAft_moon(m) {
+
+        if (m === "first-quarter") {
+            bef="getting";
+            aft="you;"
+        }
+
+        return bef;
+        return aft;
+
+    }
+
+    befAft_moon(m);
+    console.log("bef:", bef, "aft:", aft); //corre
+
     let comp = new Array();
     comp = rm_f.completions([bef], [aft]);
-    //console.dir(comp);
+    console.dir(comp); //array vazio. Mas no .pde funciona com esta combinação de palavras (bef, aft)
 
 
     for (let i = 0; i < comp.length; i++) {
@@ -161,7 +178,7 @@ function map3(adj){
     var randomLema;
     randomLema = frases[a];
     console.log("frase random:",randomLema);
-    lema.html(randomLema);
+    lema.html(randomLema,true);
 
 }
 
@@ -175,4 +192,8 @@ function criaMod(text, n) {
     let rm = RiTa.markov(n);
     rm.addText(text);
     return rm;
+}
+
+function draw() {
+
 }

@@ -7,5 +7,24 @@
   }
   #middle-moon{
     display:flex;
+    justify-content: center;
   }
+  #container{
+    max-width: 60%;
+    text-align: center;
+  }
+ #middle-moon #dos , #middle-moon #donts{
+   text-transform: capitalize;
+ }
+ #middle-moon {
+   width:100%;
+ }
 
+ #middle-moon ul {
+  list-style-type: none;
+  width:45%;
+  font-family: "Rubik";
+}
+#container p, #container h1{
+  font-family: "Italiana"!important;
+}
