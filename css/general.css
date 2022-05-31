@@ -35,7 +35,7 @@ body{
   justify-content: center;
   align-items: center;
 }
-#content img{
+.conteudo ul li img{
   width:40%;
   padding-bottom: 2%;
 }
