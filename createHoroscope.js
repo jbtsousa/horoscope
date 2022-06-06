@@ -119,18 +119,37 @@ function map2(m) {
     console.log("MAPEAMENTO2");
 
     let txt_horoscopes = carregaCont(horoscopes);
-    var rm_f = criaMod(txt_horoscopes, 6);
+    var rm_f = criaMod(txt_horoscopes, 3);
 
     console.log(m);
 
     function befAft_moon(m) {
 
-
-
-       // if (m === "first-quarter") {
-            bef="getting";
-            aft="you;"
-        //}
+        if (m === "new-moon") {
+            bef = ["new"];
+            aft = ["you"];
+        } else if(m === "waxing-crescent"){
+            bef = ["getting"];
+            aft = ["you"];
+        } else if(m === "first-quarter"){
+            bef = ["feel"];
+            aft = ["great"];
+        } else if(m === "waxing-gibbous"){
+            bef = ["try"];
+            aft = ["more"];
+        } else if(m === "full-moon"){
+            bef = ["full"];
+            aft = ["you"];
+        } else if(m === "waning-gibbous"){
+            bef = ["real"];
+            aft = ["you"];
+        } else if(m === "third-quarter"){
+            bef = ["great"];
+            aft = ["will"];
+        }else if(m === "waning-crescent"){
+            bef = ["before"];
+            aft = ["you"];
+        }
 
         return bef;
         return aft;
@@ -138,18 +157,32 @@ function map2(m) {
     }
 
     befAft_moon(m);
-    console.log("bef:", bef, "aft:", aft); //corre
+    console.log("bef:", bef, "aft:", aft); 
 
-    let comp = new Array();
-    comp = rm_f.completions([bef], [aft]);
-    console.dir(comp); //array vazio. Mas no .pde funciona com esta combinação de palavras (bef, aft)
+    let comp = rm_f.completions([bef],[aft]); //comp tem todo o tipo de palavras middle
+    console.dir(comp); 
+    console.log(RiTa.pos(comp));
 
+
+    let comp2 = new Array(); //comp2 vai ter só nomes e adjetivos
 
     for (let i = 0; i < comp.length; i++) {
-        if (RiTa.isAdjective(comp[i])) {
-            console.log("middle word:",comp[i]);
+        if ((RiTa.isAdjective(comp[i]))||(RiTa.isNoun(comp[i]))||(RiTa.isVerb(comp[i]))) {
+            comp2=comp[i];
+            //console.log("middle word:",comp[i]);
         }
     }
+    console.log(comp2);
+
+    var arrayMiddleWords = new Array(); //array que recebe 6 palavras para do's and dont's
+
+    for(let i=0; i<6; i++){
+        let ind=int(random(comp.length)); //sorteio de 6 posições diferentes dentro de comp
+        arrayMiddleWords = comp[ind];
+        //console.log("indice:",ind);   
+        //console.log(arrayMiddleWords);  
+    }
+
 }  
 
 
