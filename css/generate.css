@@ -9,16 +9,17 @@
 .conteudo h1{
     text-align: center;
 }
-.sign h1:hover{
-    text-decoration: none;
-}
+
 .grid12{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin-bottom: 0;
 }
 .grid8{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr ;
+    margin-bottom: 0;
+
 }
 .grid12 li , .grid8 li {
     list-style-type: none;

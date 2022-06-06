@@ -1,9 +1,10 @@
 var horoscopes;
 var paragrafo; //é o data do processing
 let lema, dos, donts, paragraph;
+let bef, aft;
 
 
-//////////////////////////////////////////////////////////////////
+////////// Passa variáveis de inputs do utilizador para pagina seguinte 
 queryString = location.search.substring(1);
 
 var getLink = queryString.split("|");
@@ -38,7 +39,7 @@ function setup() {
 
 
 ////////////////////////////////////////////////////MAPEAMENTO 1
-///////////////////////////////////////signo >> início de frase >> text marjov e horoscope.txt >> lema
+///////////////////////////////////////signo >> início de frase >> text markov e horoscope.txt >> lema
 function map1(partner_sign){
     console.log("MAPEAMENTO1");
 
@@ -47,7 +48,6 @@ function map1(partner_sign){
 
     var phrase_inicio;
     
-
     function phr_partnerSign(partner_sign) {
 
         if (partner_sign === "aries") {
@@ -122,14 +122,15 @@ function map2(m) {
     var rm_f = criaMod(txt_horoscopes, 6);
 
     console.log(m);
-    let bef, aft;
 
     function befAft_moon(m) {
 
-        if (m === "first-quarter") {
+
+
+       // if (m === "first-quarter") {
             bef="getting";
             aft="you;"
-        }
+        //}
 
         return bef;
         return aft;
@@ -178,7 +179,7 @@ function map3(adj){
     var randomLema;
     randomLema = frases[a];
     console.log("frase random:",randomLema);
-    lema.html(randomLema,true);
+    lema.html(randomLema);
 
 }
 

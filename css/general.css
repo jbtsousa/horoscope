@@ -35,24 +35,29 @@ body{
   justify-content: center;
   align-items: center;
 }
+
 .conteudo ul li img{
   width:40%;
   padding-bottom: 2%;
 }
 
-#container{
+.container{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
   padding: 4% 4%;
   border:2px solid black;
   border-radius: 50px;
   width:40%;
+  height:50%;
 }
-#container p{
+.container p{
   font-family: "Rubik";
 }
-#container h1{
+.container h1{
   font-family: "Rubik";
 }
-#container h1{
+.container h1{
   color: black;
   cursor: pointer;
 }
