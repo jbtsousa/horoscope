@@ -45,6 +45,7 @@ body{
   display: flex;
   flex-direction: column;
   align-content: center;
+  justify-content: center;
   padding: 4% 4%;
   border:2px solid black;
   border-radius: 50px;

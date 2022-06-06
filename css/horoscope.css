@@ -9,7 +9,7 @@
     display:flex;
     justify-content: center;
   }
-  #container{
+  .container{
     max-width: 60%;
     text-align: center;
   }
@@ -25,6 +25,6 @@
   width:45%;
   font-family: "Rubik";
 }
-#container p, #container h1{
+.container p, .container h1{
   font-family: "Italiana"!important;
 }
