@@ -268,7 +268,15 @@ function map3(){
         let txt_fairytales = carregaCont(fairyTales);
         var rm_f = criaMod(txt_fairytales, 3);
     
-        let aft = chineseSign;
+        let aft;
+
+        if (chineseSign=="rooster"){
+            aft = "chicken"
+        }
+        else{
+            aft=chineseSign;
+
+        }
     
         let comp = rm_f.completions( ["the"] , [aft] ); //comp tem todo o tipo de palavras middle
         arr_adj=[];
@@ -277,10 +285,18 @@ function map3(){
                 arr_adj.push(comp[i]);
             }
         }
+        console.log(arr_adj);
         let index_adj= int(random(arr_adj.length));
         console.log('adjetivo ' + arr_adj[index_adj])
+
+        adj= arr_adj[index_adj];
+
+        if(adj == null){
+            alert("Ups, something went wrong... Please generate again!")
+        }
     
-        return adj = arr_adj[index_adj];
+        return adj 
+
     
     }
     adjChines();

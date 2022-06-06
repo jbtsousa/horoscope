@@ -1,3 +1,4 @@
+
 #horoscope{
   padding: 4% 4%;
   border:2px solid black;
@@ -27,4 +28,10 @@
 }
 .container p, .container h1{
   font-family: "Italiana"!important;
+}
+#horoscope-final{
+  font-size: 1.2em;
+}
+#horoscope-final p{
+  margin-top: 5%;
 }
