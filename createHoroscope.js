@@ -2,6 +2,7 @@ var horoscopes;
 var paragrafo; //é o data do processing
 let lema, dos, donts, paragraph;
 let bef, aft;
+let conceptnet;
 
 
 ////////// Passa variáveis de inputs do utilizador para pagina seguinte 
@@ -20,6 +21,8 @@ console.log("inputs:" ,chineseSign, moon, partnerSign);
 function preload() {
     horoscopes = loadStrings('data/horoscopes.txt');
     fairyTales = loadStrings('data/fairy_tales.txt');
+    conceptnet = loadTable('data/conceptnet5v45.csv','csv','header');
+
 }
 
 function setup() {
@@ -29,14 +32,10 @@ function setup() {
     donts = select('#donts');
     paragraph = select('#paragraph-chinese');
     
-
     map1(partnerSign);
     map2(moon);
-    //map3(chineseSign);
-    map3("fast"); //para testar
-
+    map3();
 }
-
 
 ////////////////////////////////////////////////////MAPEAMENTO 1
 ///////////////////////////////////////signo >> início de frase >> text markov e horoscope.txt >> lema
@@ -86,7 +85,6 @@ function map1(partner_sign){
         else if (partner_sign ===  "pisces") {
             phrase_inicio = "Your dreams will" //LemaF: "Your dreams will start get soon come."
         }
-        
         return phrase_inicio;
 
     }
@@ -100,7 +98,7 @@ function map1(partner_sign){
     comp = rm_2.completions(splitTokens(phrase_inicio));
 
     //i<5 define o numero maximo de palavras do lema
-    for(let i=0; i<5 && i<comp.length;i++){
+    for(let i=0; i<6 && i<comp.length;i++){
         //console.log("o resto do lema é:"," " , comp[i]);
         lemaF= lemaF+ " " +comp[i];
     }
@@ -108,14 +106,14 @@ function map1(partner_sign){
     lemaF= phrase_inicio + lemaF + ".";
 
     console.log("O lemaF é do mapeamento 1:",lemaF);
+    lema.html(lemaF);
     
 }
-
 
 ////////////////////////////////////////////////////MAPEAMENTO 2
 ///////////////////////////////////////lua >> middleWord e horoscopes.txt >> verbos e nomes
 
-function map2(m) {
+/* function map2(m) {
     console.log("MAPEAMENTO2");
 
     let txt_horoscopes = carregaCont(horoscopes);
@@ -150,12 +148,9 @@ function map2(m) {
             bef = ["before"];
             aft = ["you"];
         }
-
         return bef;
         return aft;
-
     }
-
     befAft_moon(m);
     console.log("bef:", bef, "aft:", aft); 
 
@@ -180,21 +175,118 @@ function map2(m) {
         let ind=int(random(comp.length)); //sorteio de 6 posições diferentes dentro de comp
         arrayMiddleWords = comp[ind];
         //console.log("indice:",ind);   
-        //console.log(arrayMiddleWords);  
+        console.log(arrayMiddleWords);  
     }
 
-}  
+}   */
+
+
+function map2(m){
+    let word;
+    let arr_sy =[];
+    let arr_ant=[];
+
+    if (m=="new-moon"){
+        word= 'new';
+    }
+    else if(m =="waxing-crescent"){
+        word='wax'
+    }
+    else if( m="first-quarter"){
+        word='first';
+    }
+    else if (m="waxing-gibbous"){
+        word='gibbous'
+    }
+    else if(m="full-moon"){
+        word='full'
+    }
+    else if(m="waning-gibbous"){
+        word='decrescent'
+    }
+    else if(m="third-quarter"){
+        word='third'
+    }
+    else if(m="waning-crescent"){
+        word='crescent'
+    }
+    
+    //entradas cuja primeira palavra é first
+    let arr_find = conceptnet.findRows(word, 'first');
+    
+    for (i=0;i<arr_find.length;i++){
+        //Array c todos sinonimos
+        if (arr_find[i].arr[1]== "synonym" || arr_find[i].arr[1]== "similarto"){
+            arr_sy.push(arr_find[i].arr[2])
+        }
+        //Array c todos antonimos
+        if (arr_find[i].arr[1]== "antonym" ){
+            arr_ant.push(arr_find[i].arr[2])
+        }
+    }
+    console.log (arr_sy);
+
+    let arr_dos=[];
+    let arr_donts=[];
+    for(let i=0; i<3; i++){
+        let ind=int(random(arr_sy.length)); //sorteio de 3 posições diferentes
+        arr_dos.push(arr_sy[ind]);
+    }
+    for(let i=0; i<3; i++){
+        let ind=int(random(arr_ant.length)); //sorteio de 3 posições diferentes
+        arr_donts.push(arr_ant[ind]);
+    }
+
+    console.log('do: '+ arr_dos);
+    console.log('dont:'+arr_donts);
+    let title_do = createElement('h3', "Do");
+    let title_dont = createElement('h3', "Don't");
+    dos.child(title_do);
+    donts.child(title_dont);
+    for (i=0; i<arr_dos.length; i++){
+        let li=createElement('li', arr_dos[i]);
+        dos.child(li);
+    }
+    for (i=0; i<arr_donts.length; i++){
+        let li=createElement('li', arr_donts[i]);
+        donts.child(li);
+
+    }
+
+}
 
 
 ////////////////////////////////////////////////////MAPEAMENTO 3 - incompleto. falta a camada do fairytales
 ///////////////////////////////////////animal chines >> middleWord e fairytales.txt >> adj >> 
 /////////////////////////////////////// >> givenkeyWords e horoscopes.txt >> x frases
-function map3(adj){
+function map3(){
+
     console.log("MAPEAMENTO3");
+    function adjChines(){
+        console.log("MAPEAMENTO2");
+    
+        let txt_fairytales = carregaCont(fairyTales);
+        var rm_f = criaMod(txt_fairytales, 3);
+    
+        let aft = chineseSign;
+    
+        let comp = rm_f.completions( ["the"] , [aft] ); //comp tem todo o tipo de palavras middle
+        arr_adj=[];
+        for(i=0; i<comp.length;i++){
+            if(RiTa.isAdjective(comp[i])){
+                arr_adj.push(comp[i]);
+            }
+        }
+        let index_adj= int(random(arr_adj.length));
+        console.log('adjetivo ' + arr_adj[index_adj])
+    
+        return adj = arr_adj[index_adj];
+    
+    }
+    adjChines();
 
     let txt_horoscopes = carregaCont(horoscopes);
     let rm = criaMod(txt_horoscopes, 3);
-
 
     RiTa.concordance(txt_horoscopes);
     let ret = new Array();
@@ -210,9 +302,9 @@ function map3(adj){
     let a = int(random(0, cump));
 
     var randomLema;
-    randomLema = frases[a];
-    console.log("frase random:",randomLema);
-    lema.html(randomLema);
+    randomParagraph = frases[a];
+    console.log("paragrafo:",randomParagraph);
+    paragraph.html(randomParagraph);
 
 }
 
