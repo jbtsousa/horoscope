@@ -325,7 +325,12 @@ function map3() {
     let txt_horoscopes = carregaCont(horoscopes);
     let rm = criaMod(txt_horoscopes, 3);
 
-    RiTa.concordance(txt_horoscopes);
+    opts = {
+        ignoreCase: false,
+        ignoreStopWords: true
+       };
+
+    RiTa.concordance(txt_horoscopes,opts);
     let ret = new Array();
     ret = RiTa.kwic(adj, 3);
 

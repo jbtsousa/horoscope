@@ -13,6 +13,7 @@
   .container{
     max-width: 60%;
     text-align: center;
+    position:relative;
   }
  #middle-moon #dos , #middle-moon #donts{
    text-transform: capitalize;
@@ -35,3 +36,18 @@
 #horoscope-final p{
   margin-top: 5%;
 }
+.image-bg{
+  width: auto;
+  height:12%;
+  transform-origin: center 110px;
+  display: block;
+  margin: 0 auto;
+  touch-action: none;
+}
+#orbit , #smile , #planet, #heart{
+  position: absolute;
+  z-index: 3;
+}
+
+
+

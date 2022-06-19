@@ -25,6 +25,12 @@
     <main>
         <section id="content">
 
+            <img id="orbit" class="image-bg" src="css/img/orbit.svg" alt="orbit">
+            <img id="smile" class="image-bg" src="css/img/smile.svg" alt="smile">
+            <img id="planet" class="image-bg" src="css/img/planet.svg" alt="planet">
+            <img id="heart" class="image-bg" src="css/img/heart.svg" alt="heart">
+
+
             <img src="css/img/title-generate.svg" id="title" alt="title">
             <div class="container " id="horoscope-final">
                 <h1 id="lema-sign">
@@ -33,17 +39,17 @@
 
                 <div id="middle-moon">
                     <ul id="dos">
-                        
+
                     </ul>
                     <ul id="donts">
-                       
+
 
                     </ul>
 
                 </div>
 
                 <p id="paragraph-chinese">
-                    
+
                 </p>
 
 
@@ -62,3 +68,29 @@
 
 
 </html>
+
+<script>
+    function getRandom(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
+    let smile = document.getElementById("smile");
+    let orbit = document.getElementById("orbit");
+    let planet = document.getElementById("planet");
+
+    smile.style.left = getRandom(0, 15) + "%"
+    smile.style.top = getRandom(20, 80) + "%"
+
+    planet.style.left = getRandom(75, 95) + "%"
+    planet.style.top = getRandom(20, 80) + "%"
+
+    orbit.style.left = getRandom(15, 35) + "%"
+    orbit.style.top = getRandom(75, 85) + "%"
+
+    heart.style.left = getRandom(45, 65) + "%"
+    heart.style.top = getRandom(75, 85) + "%"
+
+
+
+
+</script>
