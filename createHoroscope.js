@@ -113,73 +113,6 @@ function map1(partner_sign) {
 ////////////////////////////////////////////////////MAPEAMENTO 2
 ///////////////////////////////////////lua >> middleWord e horoscopes.txt >> verbos e nomes
 
-/* function map2(m) {
-    console.log("MAPEAMENTO2");
-
-    let txt_horoscopes = carregaCont(horoscopes);
-    var rm_f = criaMod(txt_horoscopes, 3);
-
-    console.log(m);
-
-    function befAft_moon(m) {
-
-        if (m === "new-moon") {
-            bef = ["new"];
-            aft = ["you"];
-        } else if(m === "waxing-crescent"){
-            bef = ["getting"];
-            aft = ["you"];
-        } else if(m === "first-quarter"){
-            bef = ["feel"];
-            aft = ["great"];
-        } else if(m === "waxing-gibbous"){
-            bef = ["try"];
-            aft = ["more"];
-        } else if(m === "full-moon"){
-            bef = ["full"];
-            aft = ["you"];
-        } else if(m === "waning-gibbous"){
-            bef = ["real"];
-            aft = ["you"];
-        } else if(m === "third-quarter"){
-            bef = ["great"];
-            aft = ["will"];
-        }else if(m === "waning-crescent"){
-            bef = ["before"];
-            aft = ["you"];
-        }
-        return bef;
-        return aft;
-    }
-    befAft_moon(m);
-    console.log("bef:", bef, "aft:", aft); 
-
-    let comp = rm_f.completions([bef],[aft]); //comp tem todo o tipo de palavras middle
-    console.dir(comp); 
-    console.log(RiTa.pos(comp));
-
-
-    let comp2 = new Array(); //comp2 vai ter só nomes e adjetivos
-
-    for (let i = 0; i < comp.length; i++) {
-        if ((RiTa.isAdjective(comp[i]))||(RiTa.isNoun(comp[i]))||(RiTa.isVerb(comp[i]))) {
-            comp2=comp[i];
-            //console.log("middle word:",comp[i]);
-        }
-    }
-    console.log(comp2);
-
-    var arrayMiddleWords = new Array(); //array que recebe 6 palavras para do's and dont's
-
-    for(let i=0; i<6; i++){
-        let ind=int(random(comp.length)); //sorteio de 6 posições diferentes dentro de comp
-        arrayMiddleWords = comp[ind];
-        //console.log("indice:",ind);   
-        console.log(arrayMiddleWords);  
-    }
-
-}   */
-
 
 function map2(m) {
     let word;
@@ -221,39 +154,42 @@ function map2(m) {
         }
         //Array c todos antonimos
         if (arr_find[i].arr[1] == "antonym" || arr_find[i].arr[1] == "notdesires") {
-           arr_ant.push(arr_find[i].arr[2])
+            arr_ant.push(arr_find[i].arr[2])
         }
     }
     console.log(arr_sy);
     console.log(arr_ant);
 
     let arr_dos = [];
-    let arr_dos_aux=[];
+    let arr_dos_aux = [];
 
     let arr_donts = [];
-    let arr_donts_aux=[];
- 
-    while(arr_dos_aux.length<3){
-        const ind= Math.floor(Math.random()*arr_sy.length) + 1;
-        if(arr_dos_aux.indexOf(ind) === -1){ arr_dos_aux.push(ind);}
+    let arr_donts_aux = [];
+
+    while (arr_dos_aux.length < 3) {
+        const ind = Math.floor(Math.random() * arr_sy.length) + 1;
+        if (arr_dos_aux.indexOf(ind) === -1) { arr_dos_aux.push(ind); }
     }
 
-    while(arr_donts_aux.length<3){
-        const ind= Math.floor(Math.random()*arr_ant.length) + 1;
-        if(arr_donts_aux.indexOf(ind) === -1){ arr_donts_aux.push(ind);}
+    while (arr_donts_aux.length < 3) {
+        const ind = Math.floor(Math.random() * arr_ant.length) + 1;
+        if (arr_donts_aux.indexOf(ind) === -1) { arr_donts_aux.push(ind); }
     }
 
 
- 
+
     for (let i = 0; i < arr_dos_aux.length; i++) {
-        let index= arr_dos_aux[i];
-        arr_dos.push(arr_sy[index-1]);
-    } 
+        let index = arr_dos_aux[i];
+        arr_dos.push(arr_sy[index - 1]);
+    }
     for (let i = 0; i < arr_donts_aux.length; i++) {
-        let index= arr_donts_aux[i];
-        arr_donts.push(arr_ant[index-1]);
-    } 
-    
+        let index = arr_donts_aux[i];
+       // if( RiTa.isVerb(arr_ant[index - 1])=="true"){
+            arr_donts.push(arr_ant[index - 1]);
+       // }
+
+    }
+
 
     console.log('do: ' + arr_dos);
     console.log('dont:' + arr_donts);
@@ -303,7 +239,7 @@ function map3() {
             }
         }
         console.log(arr_adj);
-        
+
         let index_adj = int(random(arr_adj.length));
 
         adj = arr_adj[index_adj];
@@ -328,9 +264,9 @@ function map3() {
     opts = {
         ignoreCase: false,
         ignoreStopWords: true
-       };
+    };
 
-    RiTa.concordance(txt_horoscopes,opts);
+    RiTa.concordance(txt_horoscopes, opts);
     let ret = new Array();
     ret = RiTa.kwic(adj, 3);
 
